@@ -61,7 +61,7 @@ const Banner = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="hero h-[500px]" style={{ backgroundImage: 'url(https://i.ibb.co/K9MNq69/Saeed-Waheed-Saeed-Eye-Em-beadworkpatterns-5bb8bae64cedfd0026f5475f.jpg)' }}>
+                    <div className="hero h-[500px]" style={{ backgroundImage: 'url(https://i.ibb.co/BVX1VC6/jeff-wade-2mz-Yh2-Qu-ek-unsplash.jpg)' }}>
                         <div className="hero-overlay bg-opacity-60"></div>
                         <div className="hero-content text-center text-neutral-content">
                             <div className="w-3/4 mx-auto">
@@ -72,8 +72,10 @@ const Banner = () => {
                         </div>
                     </div>
                 </SwiperSlide>
+                
+
                 <SwiperSlide>
-                    <div className="hero h-[500px]" style={{ backgroundImage: 'url(https://i.ibb.co/jrNfkx2/images-1.jpg)' }}>
+                    <div className="hero h-[500px]" style={{ backgroundImage: 'url(https://i.ibb.co/HYMDD3G/nathana-reboucas-i-CPa-Pcs-O-m-M-unsplash.jpg)' }}>
                         <div className="hero-overlay bg-opacity-60"></div>
                         <div className="hero-content text-center text-neutral-content">
                             <div className="w-3/4 mx-auto">
