@@ -34,7 +34,7 @@ const Navbar = () => {
     }, [theme])
 
     return (
-        <div className="navbar text-base-100 bg-sky-800">
+        <div className="sticky top-0 z-50 navbar text-base-100 bg-sky-800">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

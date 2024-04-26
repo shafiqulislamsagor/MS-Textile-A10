@@ -9,24 +9,25 @@ import MainPage from './MainPage';
 import Home from './page/Home';
 import Login from './page/Login';
 import Register from './page/Register';
+import Context from './context/Context';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainPage/>,
-    children:[
+    element: <MainPage />,
+    children: [
       {
-        path:'/',
-        element:<Home/>
+        path: '/',
+        element: <Home />
       },
       {
-        path:'/login',
-        element:<Login/>
+        path: '/login',
+        element: <Login />
       },
       {
-        path:'/register',
-        element:<Register/>
+        path: '/register',
+        element: <Register />
       }
     ]
   },
@@ -34,6 +35,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Context>
+      <RouterProvider router={router} />
+    </Context>
   </React.StrictMode>,
 )

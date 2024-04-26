@@ -17,3 +17,10 @@
 .tblack{
     color: black ;
 }
+
+.bgColor{
+    background-color: rgb(59 119 169 ) !important;
+}
+.textWhite{
+    color: white !important;
+}
