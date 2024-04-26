@@ -2,6 +2,7 @@
 import According from "../components/According";
 import Banner from "../components/Banner";
 import CardSection from "../components/CardSection";
+import Review from "../components/Review";
 
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
             <Banner/>
             <CardSection/>
             <According/>
+            <Review/>
         </div>
     );
 };
