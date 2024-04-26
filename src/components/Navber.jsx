@@ -44,7 +44,7 @@ const Navbar = () => {
                         {menuList}
                     </ul>
                 </div>
-                <a className="btn btn-ghost  text-white text-xl">SM Bead</a>
+                <a className="btn btn-ghost  text-white text-xl">SM Textile</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu gap-3 menu-horizontal px-1">

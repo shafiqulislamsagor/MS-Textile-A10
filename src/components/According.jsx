@@ -11,7 +11,7 @@ const According = () => {
                 {/* Animation Parts */}
                 <div className='w-2/5'><AnimationLearn /></div>
                 {/* According Parts */}
-                <div className='w-1/2'>
+                <div className='w-1/2 space-y-1'>
                     <div className="collapse collapse-plus bg-base-200">
                         <input type="radio" name="my-accordion-3" defaultChecked />
                         <div className="collapse-title text-xl font-medium">
