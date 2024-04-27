@@ -7,7 +7,7 @@ const CarftItems = () => {
     const {data} = useContext(ApiContext)
     return (
         <div className="relative my-10 overflow-x-auto shadow-md sm:rounded-lg">
-
+            <h2 className="text-4xl font-bold text-center mb-12">All Products</h2>
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
