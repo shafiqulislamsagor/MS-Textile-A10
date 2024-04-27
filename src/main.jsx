@@ -10,6 +10,7 @@ import Home from './page/Home';
 import Login from './page/Login';
 import Register from './page/Register';
 import Context from './context/Context';
+import { Toaster } from 'react-hot-toast';
 
 
 const router = createBrowserRouter([
@@ -37,6 +38,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Context>
       <RouterProvider router={router} />
+      <Toaster position="top-right"
+        reverseOrder={false} />
     </Context>
   </React.StrictMode>,
 )

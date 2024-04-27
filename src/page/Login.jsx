@@ -1,11 +1,46 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import { useContext } from "react";
+import { ApiContext } from "../context/Context";
+import Swal from "sweetalert2";
 
 const Login = () => {
+
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    const { LoginUser } = useContext(ApiContext)
+
+    const loginFormHandler = event => {
+        event.preventDefault()
+
+        const target = event.target;
+        const email = target.email.value;
+        const password = target.password.value;
+
+        LoginUser(email, password)
+            .then(() => {
+                // Signed in 
+                Swal.fire({
+                    title: "Successfully",
+                    text: "Your Account Login is Successfully ..!!",
+                    icon: "success"
+                });
+                navigate(location?.state ? location.state:'/');
+                // ...
+            })
+            .catch(() => {
+                Swal.fire({
+                    title: "Error",
+                    text: "Email or password wrong ..!!",
+                    icon: "error"
+                });
+            })
+    }
     return (
         <div className="w-2/5 p-10 mx-auto bg-base-300 my-12 rounded-lg">
-            <form className="">
+            <form onSubmit={loginFormHandler} className="">
                 <h2 className="text-3xl text-center mb-10">Log In Now</h2>
                 <div className="relative z-0 w-full mb-5 group">
                     <input type="email" name="email" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
@@ -19,8 +54,8 @@ const Login = () => {
             </form>
             <div className="divider">OR</div>
             <div className="flex mb-10 justify-center items-center gap-5">
-                <Link className="text-4xl border p-2 rounded-full btn h-auto  border-white hover:border-white hover:scale-105"><FcGoogle/></Link>
-                <Link className="text-4xl border p-2 rounded-full btn h-auto  border-white hover:border-white hover:scale-105"><FaGithub/></Link>
+                <Link className="text-4xl border p-2 rounded-full btn h-auto  border-white hover:border-white hover:scale-105"><FcGoogle /></Link>
+                <Link className="text-4xl border p-2 rounded-full btn h-auto  border-white hover:border-white hover:scale-105"><FaGithub /></Link>
             </div>
             <Link to='/register' className="underline hover:text-cyan-600">Create a new accounts ? Register</Link>
         </div>

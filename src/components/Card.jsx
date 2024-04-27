@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 
 const CardSec = ({ card }) => {
-    console.log(card);
+    // console.log(card);
     const { NewId, image, customization, item_name, price, processing_time, rating, short_description, stockStatus, subcategory_Name, user_email, user_name } = card
     return (
         <Card className="p-3 bgColor textWhite">

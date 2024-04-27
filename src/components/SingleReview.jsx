@@ -1,8 +1,8 @@
 
 import { PropTypes } from 'prop-types';
 
-const SingleReview = ({data}) => {
-    if(!data){
+const SingleReview = ({ data }) => {
+    if (!data) {
         return
     }
     return (
@@ -12,9 +12,8 @@ const SingleReview = ({data}) => {
             </figure>
             <div className="px-10 pt-5 pb-10 space-y-2">
                 <div className="badge badge-accent badge-outline">{data.name}</div>
-                <h2>
-                    <h5 className="text-2xl fontSmall font-semibold tracking-tight text-gray-900 dark:text-white">{data.product}</h5>
-                </h2>
+                <h5 className="text-2xl fontSmall font-semibold tracking-tight text-gray-900 dark:text-white">{data.product}</h5>
+
                 <h2 className='text-base fontSmall font-light'><span className='font-bold'>Review:</span> {data.review}</h2>
                 <div className="flex items-center mt-2.5 mb-5">
                     <div className="flex items-center space-x-1 rtl:space-x-reverse">
@@ -45,5 +44,5 @@ export default SingleReview;
 
 
 SingleReview.propTypes = {
-    data:PropTypes.object
+    data: PropTypes.object
 }
