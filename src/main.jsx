@@ -11,6 +11,9 @@ import Login from './page/Login';
 import Register from './page/Register';
 import Context from './context/Context';
 import { Toaster } from 'react-hot-toast';
+import CarftItems from './page/CarftItems';
+import AddCraftitems from './page/AddCraftitems';
+import MyCraftitems from './page/MyCraftitems';
 
 
 const router = createBrowserRouter([
@@ -29,6 +32,18 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register />
+      },
+      {
+        path:'/craftitems',
+        element: <CarftItems/>
+      },
+      {
+        path:'/addcraftitems',
+        element:<AddCraftitems/>
+      },
+      {
+        path:'/mycraftitems',
+        element:<MyCraftitems/>
       }
     ]
   },

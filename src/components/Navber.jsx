@@ -2,15 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { getStore, setStore } from "../localStorage/Storage";
 import { ApiContext } from "../context/Context";
+import '../index.css'
 
 
 const Navbar = () => {
-    const menuList = <>
-        <li><NavLink>Home</NavLink></li>
-        <li><NavLink>Craft Items</NavLink></li>
-        <li><NavLink>Add Craft Item</NavLink></li>
-        <li><NavLink>My Craft List</NavLink></li>
-    </>
+    const menuList =<>
+        <NavLink className={({ isActive }) => isActive ? 'bg-gray-200 text-gray-600 px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'px-3 py-1 rounded-lg text-white font-medium fontLarge text-base'} to='/'>Home</NavLink>
+        <NavLink className={({ isActive }) => isActive ? 'bg-gray-200 text-gray-600 px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'px-3 py-1 rounded-lg text-white font-medium fontLarge text-base'} to='/craftitems'>Craft Items</NavLink>
+        <NavLink className={({ isActive }) => isActive ? 'bg-gray-200 text-gray-600 px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'px-3 py-1 rounded-lg text-white font-medium fontLarge text-base'} to='/addcraftitems'>Add Craft Item</NavLink>
+        <NavLink className={({ isActive }) => isActive ? 'bg-gray-200 text-gray-600 px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'px-3 py-1 rounded-lg text-white font-medium fontLarge text-base'} to='/mycraftitems'>My Craft List</NavLink>
+        </>;
     const [theme, setTheme] = useState(false)
     const themeChange = (event) => {
         const value = event.target.checked
