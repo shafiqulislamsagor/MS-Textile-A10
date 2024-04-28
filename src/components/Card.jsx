@@ -1,4 +1,4 @@
-import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, Collapse, IconButton, Typography } from "@mui/material";
+import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material";
 
 import { PropTypes } from 'prop-types';
 import { TiStarHalfOutline } from "react-icons/ti";
@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const CardSec = ({ card }) => {
     // console.log(card);
-    const { NewId, image, customization, item_name, price, processing_time, rating, short_description, stockStatus, subcategory_Name, user_email, user_name } = card
+    const { _id, image, item_name, price, processing_time, rating, short_description , subcategory_Name,  user_name } = card
     return (
         <Card className="p-3 bgColor textWhite">
             <CardHeader
@@ -40,7 +40,7 @@ const CardSec = ({ card }) => {
                 </Typography>
             </CardContent>
             <CardActions className="flex justify-between">
-                <Link className="btn rounded-md bg-teal-700 text-white">View Details</Link>
+                <Link to={`/viewcard/${_id}`} className="btn rounded-md bg-teal-700 text-white">View Details</Link>
                 <h2 className="text-lg font-bold fontSmall">Price : ${price}</h2>
             </CardActions>
         </Card>

@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { ApiContext } from "../context/Context";
 import CardSec from "./Card";
+import { Link } from "react-router-dom";
 
 const CardSection = () => {
     const context = useContext(ApiContext)
@@ -16,7 +17,7 @@ const CardSection = () => {
                 }
             </div>
             <div className="flex justify-center mt-8">
-                <button className="btn rounded-md bg-teal-500 text-white">All Products</button>
+                <Link to='/craftitems' className="btn rounded-md bg-teal-500 text-white">All Products</Link>
             </div>
         </div>
     );

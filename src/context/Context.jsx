@@ -68,7 +68,7 @@ const Context = ({ children }) => {
 
 
     useEffect(() => {
-        fetch('http://localhost:4000/')
+        fetch('http://localhost:4000/alldata')
             .then(res => res.json())
             .then(data => setData(data))
     }, [])

@@ -1,8 +1,9 @@
 
 import { PropTypes } from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const CarftCard = ({ data }) => {
-    // console.log(data);
+    console.log(data);
     return (
         <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <td className="p-4">
@@ -34,12 +35,12 @@ const CarftCard = ({ data }) => {
                 </div>
             </td>
             <td className="px-6 py-4">
-                <a
-                    href="#"
+                <Link
+                    to={`/viewcard/${data._id}`}
                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
-                    Edit user
-                </a>
+                    View Details
+                </Link>
             </td>
         </tr>
     );

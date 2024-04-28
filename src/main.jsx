@@ -14,6 +14,7 @@ import { Toaster } from 'react-hot-toast';
 import CarftItems from './page/CarftItems';
 import AddCraftitems from './page/AddCraftitems';
 import MyCraftitems from './page/MyCraftitems';
+import ViewCard from './page/ViewCard';
 
 
 const router = createBrowserRouter([
@@ -44,6 +45,11 @@ const router = createBrowserRouter([
       {
         path:'/mycraftitems',
         element:<MyCraftitems/>
+      },
+      {
+        path:'/viewcard/:id',
+        element: <ViewCard/>,
+        loader: ()=> fetch('http://localhost:4000/alldata')
       }
     ]
   },
