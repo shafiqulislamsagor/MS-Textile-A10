@@ -1,22 +1,33 @@
+import { useContext } from "react";
+import { ApiContext } from './../context/Context';
 
 
 const AddCraftitems = () => {
-    const addCardHandler = event =>{
+    const { user } = useContext(ApiContext)
+    const uid = user?.uid
+    const addCardHandler = event => {
         event.preventDefault()
         const target = event.target;
-        const productName = target.productName.value;
-        const productPhoto = target.productPhoto.value;
-        const email = target.email.value;
-        const sellerName = target.sellerName.value;
-        const description = target.description.value;
+        const item_name = target.productName.value;
+        const image = target.productPhoto.value;
+        const user_email = target.email.value;
+        const user_name = target.sellerName.value;
+        const short_description = target.description.value;
         const price = target.price.value;
         const rating = target.rating.value;
-        const order = target.order.value;
+        const stockStatus = target.order.value;
         const customization = target.customization.value;
-        const category = target.category.value;
-        const date = target.date.value;
-        const newUserCard = {productName,productPhoto,email,sellerName,description,price,rating,order,customization,category,date}
+        const subcategory_Name = target.category.value;
+        const processing_time = target.date.value;
+        const newUserCard = { uid, item_name, image, user_email, user_name, short_description, price, rating, stockStatus, customization, subcategory_Name, processing_time }
         console.log(newUserCard);
+        fetch(`http://localhost:4000/users/:${user?.uid}`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newUserCard)
+        })
         target.reset()
     }
     return (

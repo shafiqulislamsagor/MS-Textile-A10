@@ -6,6 +6,7 @@ import auth from './../../firebase.config';
 export const ApiContext = createContext(null)
 
 const Context = ({ children }) => {
+    const [loader,setLoader] = useState(false)
 
     const [user, setUser] = useState(null)
 
@@ -15,12 +16,14 @@ const Context = ({ children }) => {
     // User Register and create
 
     const registerUser = (email, password) => {
+        setLoader(false)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     // User login 
 
     const LoginUser = (email, password) => {
+        setLoader(false)
         return (
             signInWithEmailAndPassword(auth, email, password)
 
@@ -30,6 +33,7 @@ const Context = ({ children }) => {
     // User Update Profile
 
     const UpdateProfile = (name, photo) => {
+        setLoader(false)
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
         })
@@ -39,6 +43,7 @@ const Context = ({ children }) => {
     // User LogOut
 
     const LogOut = () => {
+        setLoader(false)
         return (
             signOut(auth).then(() => {
                 // Sign-out successful.
@@ -54,6 +59,7 @@ const Context = ({ children }) => {
     const GoogleProvider = new GoogleAuthProvider();
 
     const GoogleLogIn = () =>{
+        setLoader(false)
         return signInWithPopup(auth,GoogleProvider)
     }
 
@@ -70,6 +76,7 @@ const Context = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (user) => {
+            setLoader(true)
             setUser(user)
         })
         return () => {
@@ -78,7 +85,7 @@ const Context = ({ children }) => {
     }, [])
 
 
-    const value = { user, data, registerUser, UpdateProfile, LogOut, LoginUser , GoogleLogIn }
+    const value = {loader, user, data, registerUser, UpdateProfile, LogOut, LoginUser , GoogleLogIn }
     return (
         <ApiContext.Provider value={value}>
             {children}
