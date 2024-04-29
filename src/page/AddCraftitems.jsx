@@ -28,6 +28,10 @@ const AddCraftitems = () => {
             },
             body: JSON.stringify(newUserCard)
         })
+        .then(res=> res.json())
+        .then(data=>{
+            console.log(data);
+        })
         fetch(`http://localhost:4000/alldata`, {
             method: 'POST',
             headers: {
@@ -35,12 +39,16 @@ const AddCraftitems = () => {
             },
             body: JSON.stringify(newUserCard)
         })
+        .then(res=> res.json())
+        .then(data=>{
+            console.log(data);
+        })
         target.reset()
     }
     return (
         <div className="my-12">
             <h2 className="text-center text-3xl my-5">Product Added Form</h2>
-            <form onSubmit={addCardHandler} className="w-3/5 mx-auto">
+            <form onSubmit={addCardHandler} className="w-11/12 md:w-3/5 mx-auto">
                 <div className="relative z-0 w-full mb-5 group">
                     <input
                         type="text"

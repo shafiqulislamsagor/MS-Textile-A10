@@ -7,11 +7,11 @@ const According = () => {
             
                 <h2 className='text-3xl fontLarge font-medium text-center mb-10'><Fade delay={1e3} cascade damping={1e-1}>Learn More Our Product</Fade></h2>
             
-            <div className='  flex gap-10 items-start'>
+            <div className='  flex flex-col md:flex-row gap-10 items-start'>
                 {/* Animation Parts */}
-                <div className='w-2/5'><AnimationLearn /></div>
+                <div className='md:w-2/5'><AnimationLearn /></div>
                 {/* According Parts */}
-                <div className='w-1/2 space-y-1'>
+                <div className='md:w-1/2 space-y-1'>
                     <div className="collapse collapse-plus bg-base-200">
                         <input type="radio" name="my-accordion-3" defaultChecked />
                         <div className="collapse-title text-xl font-medium">

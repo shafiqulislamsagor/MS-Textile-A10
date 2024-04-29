@@ -15,41 +15,58 @@ import CarftItems from './page/CarftItems';
 import AddCraftitems from './page/AddCraftitems';
 import MyCraftitems from './page/MyCraftitems';
 import ViewCard from './page/ViewCard';
+import UpdateCard from './page/UpdateCard';
+import { HelmetProvider } from 'react-helmet-async';
+import Privet from './context/PrivetRoutes';
+import PageNotFound from './page/Error';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainPage />,
+    errorElement: <PageNotFound />,
     children: [
       {
         path: '/',
-        element: <Home />
+        element: <Home />,
+        errorElement: <PageNotFound />
       },
       {
         path: '/login',
-        element: <Login />
+        element: <Login />,
+        errorElement: <PageNotFound />
       },
       {
         path: '/register',
-        element: <Register />
+        element: <Register />,
+        errorElement: <PageNotFound />
       },
       {
-        path:'/craftitems',
-        element: <CarftItems/>
+        path: '/craftitems',
+        element: <CarftItems />,
+        errorElement: <PageNotFound />
       },
       {
-        path:'/addcraftitems',
-        element:<AddCraftitems/>
+        path: '/addcraftitems',
+        element: <Privet><AddCraftitems /></Privet>,
+        errorElement: <PageNotFound />
       },
       {
-        path:'/mycraftitems',
-        element:<MyCraftitems/>
+        path: '/mycraftitems',
+        element: <Privet><MyCraftitems /></Privet>,
+        errorElement: <PageNotFound />
       },
       {
-        path:'/viewcard/:id',
-        element: <ViewCard/>,
-        loader: ()=> fetch('http://localhost:4000/alldata')
+        path: '/viewcard/:id',
+        element: <Privet><ViewCard /></Privet>,
+        loader: () => fetch('http://localhost:4000/alldata'),
+        errorElement: <PageNotFound />
+      },
+      {
+        path: '/updatecard/:id',
+        element: <Privet><UpdateCard /></Privet>,
+        errorElement: <PageNotFound />
       }
     ]
   },
@@ -58,9 +75,11 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Context>
-      <RouterProvider router={router} />
-      <Toaster position="top-right"
-        reverseOrder={false} />
+      <HelmetProvider>
+        <RouterProvider router={router} />
+        <Toaster position="top-right"
+          reverseOrder={false} />
+      </HelmetProvider>
     </Context>
   </React.StrictMode>,
 )

@@ -8,15 +8,58 @@ import Swal from "sweetalert2";
 
 const Register = () => {
 
-    const { registerUser, UpdateProfile, LogOut ,GoogleLogIn} = useContext(ApiContext)
+    const { registerUser, UpdateProfile, LogOut, GoogleLogIn,GitHubLogIn } = useContext(ApiContext)
     const navigate = useNavigate();
 
     const passCondition = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
 
 
-    const Glogin = () =>{
+    const Glogin = () => {
         GoogleLogIn()
-            .then(() => {
+            .then((current) => {
+                const user = current.user
+                // console.log(current,user);
+                const { uid, email } = user
+                const newUser = { uid, email }
+                // console.log(newUser);
+                fetch('http://localhost:4000/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                    .then(res => res.json())
+                    .then(data => console.log(data))
+                Swal.fire({
+                    title: "Successfully",
+                    text: "Your Account created is Successfully ..!!",
+                    icon: "success"
+                });
+                navigate('/login')
+                LogOut()
+            })
+            .catch(() => {
+                toast.error('Please, Try Again')
+            })
+    }
+    const Gitlogin = () => {
+        GitHubLogIn()
+            .then((current) => {
+                const user = current.user
+                // console.log(current,user);
+                const { uid, email } = user
+                const newUser = { uid, email }
+                // console.log(newUser);
+                fetch('http://localhost:4000/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                    .then(res => res.json())
+                    .then(data => console.log(data))
                 Swal.fire({
                     title: "Successfully",
                     text: "Your Account created is Successfully ..!!",
@@ -49,7 +92,7 @@ const Register = () => {
 
                         // Signed up 
                         const user = userCredential.user;
-                        console.log(user)
+                        // console.log(user)
                         UpdateProfile(name, photo)
                         const { uid, email } = user
                         const newUser = { uid, email }
@@ -121,7 +164,7 @@ const Register = () => {
             <div className="divider">OR</div>
             <div className="flex mb-10 justify-center items-center gap-5">
                 <button onClick={Glogin} className="text-4xl border p-2 rounded-full btn h-auto  border-white hover:border-white hover:scale-105"><FcGoogle /></button>
-                <Link className="text-4xl border p-2 rounded-full btn h-auto  border-white hover:border-white hover:scale-105"><FaGithub /></Link>
+                <button onClick={Gitlogin} className="text-4xl border p-2 rounded-full btn h-auto  border-white hover:border-white hover:scale-105"><FaGithub /></button>
             </div>
             <Link to='/login' className="underline hover:text-cyan-600">Already have an account ? Log In</Link>
         </div>

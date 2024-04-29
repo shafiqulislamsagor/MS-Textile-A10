@@ -50,7 +50,7 @@ const logoutbtn = () =>{
                         {menuList}
                     </ul>
                 </div>
-                <a className="btn btn-ghost  text-white text-xl">SM Textile</a>
+                <Link to='/' className="btn btn-ghost  text-white text-2xl">SM Textile</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu gap-3 menu-horizontal px-1">

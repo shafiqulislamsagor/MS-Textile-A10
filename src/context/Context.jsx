@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile ,GoogleAuthProvider} from "firebase/auth";
 import auth from './../../firebase.config';
+import { GithubAuthProvider } from "firebase/auth/cordova";
 
 export const ApiContext = createContext(null)
 
@@ -60,7 +61,15 @@ const Context = ({ children }) => {
 
     const GoogleLogIn = () =>{
         setLoader(false)
+        
         return signInWithPopup(auth,GoogleProvider)
+    }
+
+
+    const GithubProvider = new GithubAuthProvider()
+    const GitHubLogIn = () =>{
+        setLoader(false)
+        return signInWithPopup(auth,GithubProvider)
     }
 
 
@@ -76,8 +85,9 @@ const Context = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (user) => {
-            setLoader(true)
             setUser(user)
+            setLoader(true)
+            
         })
         return () => {
             unSubscribe()
@@ -85,7 +95,7 @@ const Context = ({ children }) => {
     }, [])
 
 
-    const value = {loader, user, data, registerUser, UpdateProfile, LogOut, LoginUser , GoogleLogIn }
+    const value = {loader, user, data,GitHubLogIn, registerUser, UpdateProfile, LogOut, LoginUser , GoogleLogIn }
     return (
         <ApiContext.Provider value={value}>
             {children}
