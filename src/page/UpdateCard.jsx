@@ -59,10 +59,12 @@ const UpdateCard = () => {
                     text: "Your Product Updated ..!!",
                     icon: "success"
                 });
+                
+        target.reset()
             })
 
-        fetch(`https://sm-bead.vercel.app/alldata`, {
-            method: 'POST',
+        fetch(`https://sm-bead.vercel.app/alldata/card/${id}`, {
+            method: 'PUT',
             headers: {
                 "Content-Type": "application/json",
             },
@@ -71,7 +73,6 @@ const UpdateCard = () => {
             .then(data => {
                 console.log(data);
             })
-        target.reset()
     }
 
     const deleteHandle = (id) => {
