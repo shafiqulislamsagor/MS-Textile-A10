@@ -134,7 +134,7 @@ const Register = () => {
 
     }
     return (
-        <div className="w-3/5 p-10 mx-auto bg-base-300 my-12 rounded-lg">
+        <div className="w-[95%] lg:w-3/5 p-10 mx-auto bg-base-300 my-12 rounded-lg">
             <form onSubmit={registerFormHandler} className="">
                 <h2 className="text-3xl text-center mb-10">Register Now</h2>
                 <div className="relative z-0 w-full mb-5 group">
