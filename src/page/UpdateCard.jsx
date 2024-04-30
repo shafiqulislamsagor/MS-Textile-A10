@@ -1,30 +1,38 @@
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { ApiContext } from './../context/Context';
-import { useParams } from "react-router-dom";
-// import Swal from "sweetalert2";
-import Swal from 'sweetalert2/dist/sweetalert2.js'
+import {  useNavigate, useParams } from "react-router-dom";
 import { TiStarHalfOutline } from "react-icons/ti";
+import Swal from "sweetalert2";
 
 
 const UpdateCard = () => {
     const [data, setData] = useState([])
+    const [updated , setUpdated] = useState({})
     const { id } = useParams()
-    // console.log(data);
-    const currentData = data.find(data => data._id == id)
-    // console.log(currentData);
+    const navigate = useNavigate(); 
+    let currentData = data.find(data => data._id == id)
+    if(updated.rating){
+        currentData = updated
+    }
+
     useEffect(() => {
-        fetch(`http://localhost:4000/users`)
+        fetch(`https://sm-bead.vercel.app/users`)
             .then(res => res.json())
             .then(data => setData(data))
     }, [])
 
     const { user } = useContext(ApiContext)
     const uid = user?.uid
+    const userName = user?.displayName
+    const userEmail  = user?.email
+
     const addCardHandler = event => {
         event.preventDefault()
         const target = event.target;
         const item_name = target.productName.value;
+        const user_name = userName;
+        const user_email = userEmail;
         const image = target.productPhoto.value;
         const short_description = target.description.value;
         const price = target.price.value;
@@ -33,9 +41,9 @@ const UpdateCard = () => {
         const customization = target.customization.value;
         const subcategory_Name = target.category.value;
         const processing_time = target.date.value;
-        const newUserCard = { uid, id, item_name, image, short_description, price, rating, stockStatus, customization, subcategory_Name, processing_time }
-        console.log(newUserCard);
-        fetch(`http://localhost:4000/users/card/${id}`, {
+        const newUserCard = { uid,user_email, user_name, id, item_name, image, short_description, price, rating, stockStatus, customization, subcategory_Name, processing_time }
+
+        fetch(`https://sm-bead.vercel.app/users/card/${id}`, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json",
@@ -45,9 +53,15 @@ const UpdateCard = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                setUpdated(newUserCard)
+                Swal.fire({
+                    title: "Successfully",
+                    text: "Your Product Updated ..!!",
+                    icon: "success"
+                });
             })
 
-        fetch(`http://localhost:4000/alldata`, {
+        fetch(`https://sm-bead.vercel.app/alldata`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -59,6 +73,7 @@ const UpdateCard = () => {
             })
         target.reset()
     }
+
     const deleteHandle = (id) => {
         console.log(id);
         const swalWithBootstrapButtons = Swal.mixin({
@@ -78,7 +93,7 @@ const UpdateCard = () => {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:4000/users/card/${id}`, {
+                fetch(`https://sm-bead.vercel.app/users/card/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -89,6 +104,7 @@ const UpdateCard = () => {
                             text: "Your file has been deleted.",
                             icon: "success"
                         });
+                        navigate('/mycraftitems'); 
                     })
                     .catch(error => {
                         console.error('Error:', error);
@@ -112,7 +128,7 @@ const UpdateCard = () => {
     }
 
     if (!currentData) {
-        return
+        return null;
     }
     const { image, customization, item_name, price, processing_time, rating, short_description, stockStatus, subcategory_Name, user_email, user_name } = currentData
 

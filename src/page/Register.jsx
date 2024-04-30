@@ -22,7 +22,7 @@ const Register = () => {
                 const { uid, email } = user
                 const newUser = { uid, email }
                 // console.log(newUser);
-                fetch('http://localhost:4000/users', {
+                fetch('https://sm-bead.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -48,10 +48,10 @@ const Register = () => {
             .then((current) => {
                 const user = current.user
                 // console.log(current,user);
-                const { uid, email } = user
-                const newUser = { uid, email }
+                const { uid } = user
+                const newUser = { uid }
                 // console.log(newUser);
-                fetch('http://localhost:4000/users', {
+                fetch('https://sm-bead.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -96,7 +96,7 @@ const Register = () => {
                         UpdateProfile(name, photo)
                         const { uid, email } = user
                         const newUser = { uid, email }
-                        fetch('http://localhost:4000/users', {
+                        fetch('https://sm-bead.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'

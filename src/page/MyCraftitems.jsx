@@ -11,7 +11,7 @@ const MyCraftitems = () => {
     // console.log(user);
     useEffect(() => {
         if(user !== null){
-            fetch(`http://localhost:4000/users/${user.uid}`)
+            fetch(`https://sm-bead.vercel.app/users/${user.uid}`)
             .then(res => res.json())
             .then(data => setCards(data))
         }

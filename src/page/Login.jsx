@@ -11,10 +11,24 @@ const Login = () => {
     const location = useLocation()
     const navigate = useNavigate()
 
-    const { LoginUser, GoogleLogIn } = useContext(ApiContext)
+    const { LoginUser, GoogleLogIn , GitHubLogIn } = useContext(ApiContext)
 
     const Glogin = () => {
         GoogleLogIn()
+            .then(() => {
+                Swal.fire({
+                    title: "Successfully",
+                    text: "Your Account Login is Successfully ..!!",
+                    icon: "success"
+                });
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch(() => {
+                toast.error('Please, Try Again')
+            })
+    }
+    const GitLogIn = () => {
+        GitHubLogIn()
             .then(() => {
                 Swal.fire({
                     title: "Successfully",
@@ -75,7 +89,7 @@ const Login = () => {
             <div className="divider">OR</div>
             <div className="flex mb-10 justify-center items-center gap-5">
                 <button onClick={Glogin} className="text-4xl border p-2 rounded-full btn h-auto  border-white hover:border-white hover:scale-105"><FcGoogle /></button>
-                <Link className="text-4xl border p-2 rounded-full btn h-auto  border-white hover:border-white hover:scale-105"><FaGithub /></Link>
+                <button onClick={GitLogIn} className="text-4xl border p-2 rounded-full btn h-auto  border-white hover:border-white hover:scale-105"><FaGithub /></button>
             </div>
             <Link to='/register' className="underline hover:text-cyan-600">Create a new accounts ? Register</Link>
         </div>

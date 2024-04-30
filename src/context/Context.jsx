@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile ,GoogleAuthProvider} from "firebase/auth";
 import auth from './../../firebase.config';
-import { GithubAuthProvider } from "firebase/auth/cordova";
+import { GithubAuthProvider } from "firebase/auth";
 
 export const ApiContext = createContext(null)
 
@@ -66,10 +66,12 @@ const Context = ({ children }) => {
     }
 
 
-    const GithubProvider = new GithubAuthProvider()
+    
+
+const Gitprovider = new GithubAuthProvider();
     const GitHubLogIn = () =>{
         setLoader(false)
-        return signInWithPopup(auth,GithubProvider)
+        return signInWithPopup(auth,Gitprovider)
     }
 
 
@@ -77,7 +79,7 @@ const Context = ({ children }) => {
 
 
     useEffect(() => {
-        fetch('http://localhost:4000/alldata')
+        fetch('https://sm-bead.vercel.app/alldata')
             .then(res => res.json())
             .then(data => setData(data))
     }, [])

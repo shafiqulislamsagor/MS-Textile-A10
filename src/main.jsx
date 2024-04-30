@@ -60,7 +60,7 @@ const router = createBrowserRouter([
       {
         path: '/viewcard/:id',
         element: <Privet><ViewCard /></Privet>,
-        loader: () => fetch('http://localhost:4000/alldata'),
+        loader: () => fetch('https://sm-bead.vercel.app/alldata'),
         errorElement: <PageNotFound />
       },
       {

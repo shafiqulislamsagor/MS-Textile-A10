@@ -1,10 +1,13 @@
 import { useContext } from "react";
 import { ApiContext } from './../context/Context';
+import Swal from "sweetalert2";
 
 
 const AddCraftitems = () => {
     const { user } = useContext(ApiContext)
     const uid = user?.uid
+    const currentEmail = user?.email
+    const currentName = user?.displayName
     const addCardHandler = event => {
         event.preventDefault()
         const target = event.target;
@@ -21,29 +24,37 @@ const AddCraftitems = () => {
         const processing_time = target.date.value;
         const newUserCard = { uid, item_name, image, user_email, user_name, short_description, price, rating, stockStatus, customization, subcategory_Name, processing_time }
         console.log(newUserCard);
-        fetch(`http://localhost:4000/users/:${user?.uid}`, {
+        fetch(`https://sm-bead.vercel.app/users/:${user?.uid}`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(newUserCard)
         })
-        .then(res=> res.json())
-        .then(data=>{
-            console.log(data);
-        })
-        fetch(`http://localhost:4000/alldata`, {
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                Swal.fire({
+                    title: "Successfully",
+                    text: "Your Product added ..!!",
+                    icon: "success"
+                });
+
+                target.reset()
+            })
+        fetch(`https://sm-bead.vercel.app/alldata`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(newUserCard)
         })
-        .then(res=> res.json())
-        .then(data=>{
-            console.log(data);
-        })
-        target.reset()
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+
+            })
+
     }
     return (
         <div className="my-12">
@@ -86,6 +97,7 @@ const AddCraftitems = () => {
                         <input
                             type="email"
                             name="email"
+                            defaultValue={currentEmail}
                             id="email"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
@@ -103,6 +115,7 @@ const AddCraftitems = () => {
                             type="text"
                             name="sellerName"
                             id="sellerName"
+                            defaultValue={currentName}
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
