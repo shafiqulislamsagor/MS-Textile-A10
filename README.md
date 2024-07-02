@@ -40,7 +40,7 @@ VITE_SERVER_URL=https://sm-bead.vercel.app
 
 // Run the project
 npm run dev
-
+```
 
 ## npm Package Using
 
