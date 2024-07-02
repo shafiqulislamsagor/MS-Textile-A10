@@ -14,6 +14,19 @@
 
  - Interactive Product: Added features for product update, deletion, and user profile management, enabling users to modify product information and manage their profiles efficiently within the application.
 
+## Skills
+ - HTML
+ - CSS
+ - Tailwind CSS
+ - React JS
+ - Firebase
+
+## Runing Project 
+```
+npm i
+
+```
+
 ## npm Package Using
 
 
