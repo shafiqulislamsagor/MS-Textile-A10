@@ -23,7 +23,23 @@
 
 ## Runing Project 
 ```
+// npm install
 npm i
+
+//.env.local create file and firebase key setup
+VITE_apiKey=hidden
+VITE_authDomain=hidden
+VITE_projectId=hidden
+VITE_storageBucket=hidden
+VITE_messagingSenderId=hidden
+VITE_appId=hidden
+
+VITE_SERVER_URL=https://sm-bead.vercel.app
+
+//run project
+npm run dev
+
+
 
 ```
 
