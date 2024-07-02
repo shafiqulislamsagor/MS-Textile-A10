@@ -4,29 +4,31 @@
 
 ## Features
 
- - Distinct Design:SM Textile a website with a distinct design, avoiding similarities with previous projects or examples from modules. Utilize free design resources for inspiration if needed.
+- **Distinct Design:** SM Textile boasts a unique design, avoiding similarities with previous projects. Free design resources are utilized for inspiration.
 
- - Responsive Layout: Ensure responsiveness across all devices - mobile, tablet, and desktop - for a seamless user experience.
+- **Responsive Layout:** The site is fully responsive across mobile, tablet, and desktop devices, ensuring a seamless user experience.
 
- - Authentication Features: Implement email and password-based authentication for login and registration, with optional social media login. Include password verification criteria and display appropriate error messages.
+- **Authentication Features:** Email and password-based authentication is implemented for login and registration, with optional social media login. Password verification criteria and appropriate error messages are included.
 
- - Interactive Navbar: Create a dynamic navbar with active routes, displaying user-specific options like profile and logout if logged in, or login button if not. Incorporate hover functionality to reveal user information.
+- **Interactive Navbar:** The dynamic navbar displays user-specific options like profile and logout if logged in, or a login button if not. Hover functionality reveals user information.
 
- - Interactive Product: Added features for product update, deletion, and user profile management, enabling users to modify product information and manage their profiles efficiently within the application.
+- **Interactive Product:** Users can update, delete, and manage product information and profiles efficiently within the application.
 
 ## Skills
- - HTML
- - CSS
- - Tailwind CSS
- - React JS
- - Firebase
 
-## Runing Project 
-```
-// npm install
-npm i
+- HTML
+- CSS
+- Tailwind CSS
+- React JS
+- Firebase
 
-//.env.local create file and firebase key setup
+## Running Project
+
+```bash
+// Install dependencies
+npm install
+
+// Create .env.local file and set up Firebase keys
 VITE_apiKey=hidden
 VITE_authDomain=hidden
 VITE_projectId=hidden
@@ -36,12 +38,9 @@ VITE_appId=hidden
 
 VITE_SERVER_URL=https://sm-bead.vercel.app
 
-//run project
+// Run the project
 npm run dev
 
-
-
-```
 
 ## npm Package Using
 
